@@ -54,7 +54,7 @@ impl<B: UsbBus> CdcAcmClass<'_, B> {
     pub fn new(alloc: &UsbBusAllocator<B>, max_packet_size: u16) -> CdcAcmClass<'_, B> {
         CdcAcmClass {
             comm_if: alloc.interface(),
-            comm_ep: alloc.interrupt(8, 255),
+            comm_ep: alloc.interrupt(8, 4),
             data_if: alloc.interface(),
             read_ep: alloc.bulk(max_packet_size),
             write_ep: alloc.bulk(max_packet_size),
